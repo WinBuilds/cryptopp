@@ -30,7 +30,7 @@ INSTALL = install
 INSTALL_PROGRAM = $(INSTALL)
 INSTALL_DATA = $(INSTALL) -m 644
 
-# Solaris provides a non-Posix grep at /usr/bin
+# Solaris provides a non-Posix shell at /usr/bin
 ifneq ($(wildcard /usr/xpg4/bin),)
   GREP ?= /usr/xpg4/bin/grep
 else
@@ -120,7 +120,11 @@ HAS_NEWLIB := $(shell $(CXX) -x c++ $(CXXFLAGS) -dM -E adhoc.cpp.proto 2>&1 | $(
 
 # Base CXXFLAGS used if the user did not specify them
 ifeq ($(SUN_COMPILER),1)
-  CXXFLAGS ?= -DNDEBUG -g -xO3
+  ifeq ($(SUNCC_512_OR_LATER),1)
+    CXXFLAGS ?= -DNDEBUG -g3 -xO3
+  else
+    CXXFLAGS ?= -DNDEBUG -g -xO3
+  endif
 else
   CXXFLAGS ?= -DNDEBUG -g2 -O3
 endif
@@ -212,7 +216,7 @@ endif
 ICC111_OR_LATER := $(shell $(CXX) --version 2>&1 | $(GREP) -c -E "\(ICC\) ([2-9][0-9]|1[2-9]|11\.[1-9])")
 
 # Add -fPIC for targets *except* X86, X32, Cygwin or MinGW
-ifeq ($(IS_X86)$(IS_CYGWIN)$(IS_MINGW),000)
+ifeq ($(IS_X86)$(IS_CYGWIN)$(IS_MINGW)$(SUN_COMPILER),0000)
  ifeq ($(findstring -fPIC,$(CXXFLAGS)),)
    CXXFLAGS += -fPIC
  endif
@@ -375,11 +379,6 @@ else
 # Add PIC
 ifeq ($(findstring -fPIC,$(CXXFLAGS)),)
   CXXFLAGS += -fPIC
-endif
-
-# Remove -fPIC if present. SunCC adds -KPIC
-ifeq ($(SUN_COMPILER),1)
-  CXXFLAGS := $(subst -fPIC,,$(CXXFLAGS))
 endif
 
 ifeq ($(IS_NEON),1)

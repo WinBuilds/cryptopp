@@ -23,12 +23,7 @@ GNUmakefile.deps
 ## GNU/GCC
 #################
 
-## Ignore GNU/GCC artifacts
 a.out
-
-## Ignore GCC temproary files. It appears Fedora
-## changed a behavior somewhere along the lines
-
 *.o
 
 #################
@@ -80,6 +75,8 @@ local.properties
 [Rr]elease/
 x64/
 build/
+build-*/
+build_*/
 [Bb]in/
 [Oo]bj/
 [Ll]ibs/
@@ -117,11 +114,14 @@ build/
 
 # Visual C++ cache files
 ipch/
+.vs/
 *.aps
 *.ncb
 *.opensdf
 *.sdf
 *.cachefile
+*.VC.db
+*.VC.opendb
 
 # Visual Studio profiler
 *.psess
@@ -204,8 +204,10 @@ App_Data/*.mdf
 App_Data/*.ldf
 
 #############
-## Windows detritus
+## Windows
 #############
+
+*.lnk
 
 # Windows image file caches
 Thumbs.db
@@ -218,7 +220,7 @@ Desktop.ini
 $RECYCLE.BIN/
 
 #############
-# Mac crap
+# Mac
 #############
 
 .DS_Store

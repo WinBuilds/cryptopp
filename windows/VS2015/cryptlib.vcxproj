@@ -29,6 +29,7 @@
     <RootNamespace>cryptlib</RootNamespace>
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <ProjectRoot>$(WINBUILDS_ROOT)</ProjectRoot>
   </PropertyGroup>
   <!-- Use DefaultPlatformToolset after Microsoft.Cpp.Default.props -->
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -60,8 +61,8 @@
   <!-- Intermediate and Output directories -->
   <!-- Cryptlib and Cryptest need extra care due to Non-DLL/DLL configs -->
   <PropertyGroup Condition="'$(Configuration)'=='Debug' Or '$(Configuration)'=='Release'" Label="Non-DLL Directories">
-    <OutDir>$(SolutionDir)../../../../build_msvc14_$(Platform)/$(Configuration)/lib/</OutDir>
-    <IntDir>$(SolutionDir)../../../../build_msvc14_$(Platform)/$(Configuration)/obj/$(ProjectName)/</IntDir>
+    <OutDir>$(WINBUILDS_ROOT)build_msvc14_$(Platform)/$(Configuration)/lib/</OutDir>
+    <IntDir>$(WINBUILDS_ROOT)build_msvc14_$(Platform)/$(Configuration)/obj/$(ProjectName)/</IntDir>
   </PropertyGroup>
   <!-- All Configurations -->
   <ItemDefinitionGroup Label="All Configurations">
@@ -133,8 +134,9 @@
       <AdditionalIncludeDirectories>$(SolutionDir)..\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <PostBuildEvent>
-      <Command>mkdir "$(SolutionDir)..\..\..\..\build_msvc14_$(Platform)\$(Configuration)\include\$(SolutionName)\"
-copy "$(SolutionDir)..\..\*.h" "$(SolutionDir)..\..\..\..\build_msvc14_$(Platform)\$(Configuration)\include\$(SolutionName)\"</Command>
+      <Command>mkdir "$(WINBUILDS_ROOT)build_msvc14_$(Platform)\$(Configuration)\include\$(SolutionName)\"
+
+copy "$(SolutionDir)..\..\*.h" "$(WINBUILDS_ROOT)build_msvc14_$(Platform)\$(Configuration)\include\$(SolutionName)\"</Command>
     </PostBuildEvent>
     <PostBuildEvent>
       <Message>Installing..</Message>
@@ -146,8 +148,9 @@ copy "$(SolutionDir)..\..\*.h" "$(SolutionDir)..\..\..\..\build_msvc14_$(Platfor
       <DebugInformationFormat>None</DebugInformationFormat>
     </ClCompile>
     <PostBuildEvent>
-      <Command>mkdir "$(SolutionDir)..\..\..\..\build_msvc14_$(Platform)\$(Configuration)\include\$(SolutionName)\"
-copy "$(SolutionDir)..\..\*.h" "$(SolutionDir)..\..\..\..\build_msvc14_$(Platform)\$(Configuration)\include\$(SolutionName)\"</Command>
+      <Command>mkdir "$(WINBUILDS_ROOT)build_msvc14_$(Platform)\$(Configuration)\include\$(SolutionName)\"
+
+copy "$(SolutionDir)..\..\*.h" "$(WINBUILDS_ROOT)build_msvc14_$(Platform)\$(Configuration)\include\$(SolutionName)\"</Command>
     </PostBuildEvent>
     <PostBuildEvent>
       <Message>Installing..</Message>
@@ -158,8 +161,9 @@ copy "$(SolutionDir)..\..\*.h" "$(SolutionDir)..\..\..\..\build_msvc14_$(Platfor
       <AdditionalIncludeDirectories>$(SolutionDir)..\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <PostBuildEvent>
-      <Command>mkdir "$(SolutionDir)..\..\..\..\build_msvc14_$(Platform)\$(Configuration)\include\$(SolutionName)\"
-copy "$(SolutionDir)..\..\*.h" "$(SolutionDir)..\..\..\..\build_msvc14_$(Platform)\$(Configuration)\include\$(SolutionName)\"</Command>
+      <Command>mkdir "$(WINBUILDS_ROOT)build_msvc14_$(Platform)\$(Configuration)\include\$(SolutionName)\"
+
+copy "$(SolutionDir)..\..\*.h" "$(WINBUILDS_ROOT)build_msvc14_$(Platform)\$(Configuration)\include\$(SolutionName)\"</Command>
     </PostBuildEvent>
     <PostBuildEvent>
       <Message>Installing..</Message>
@@ -171,8 +175,9 @@ copy "$(SolutionDir)..\..\*.h" "$(SolutionDir)..\..\..\..\build_msvc14_$(Platfor
       <DebugInformationFormat>None</DebugInformationFormat>
     </ClCompile>
     <PostBuildEvent>
-      <Command>mkdir "$(SolutionDir)..\..\..\..\build_msvc14_$(Platform)\$(Configuration)\include\$(SolutionName)\"
-copy "$(SolutionDir)..\..\*.h" "$(SolutionDir)..\..\..\..\build_msvc14_$(Platform)\$(Configuration)\include\$(SolutionName)\"</Command>
+      <Command>mkdir "$(WINBUILDS_ROOT)build_msvc14_$(Platform)\$(Configuration)\include\$(SolutionName)\"
+
+copy "$(SolutionDir)..\..\*.h" "$(WINBUILDS_ROOT)build_msvc14_$(Platform)\$(Configuration)\include\$(SolutionName)\"</Command>
     </PostBuildEvent>
     <PostBuildEvent>
       <Message>Installing..</Message>

@@ -29,6 +29,7 @@
     <RootNamespace>dlltest</RootNamespace>
     <ConfigurationType>Application</ConfigurationType>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <ProjectRoot>$(WINBUILDS_ROOT)</ProjectRoot>
   </PropertyGroup>
   <!-- Use DefaultPlatformToolset after Microsoft.Cpp.Default.props -->
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -52,8 +53,8 @@
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>NotSet</CharacterSet>
     <WholeProgramOptimization>false</WholeProgramOptimization>
-    <OutDir>$(SolutionDir)../../../../build_msvc14_$(Platform)/$(Configuration)/bin/</OutDir>
-    <IntDir>$(SolutionDir)../../../../build_msvc14_$(Platform)/$(Configuration)/obj/$(ProjectName)/</IntDir>
+    <OutDir>$(WINBUILDS_ROOT)build_msvc14_$(Platform)/$(Configuration)/bin/</OutDir>
+    <IntDir>$(WINBUILDS_ROOT)build_msvc14_$(Platform)/$(Configuration)/obj/$(ProjectName)/</IntDir>
   </PropertyGroup>
   <!-- All Configurations -->
   <ItemDefinitionGroup Label="All Configurations">
@@ -69,7 +70,7 @@
     <Link>
       <ErrorReporting>NoErrorReport</ErrorReporting>
       <AdditionalDependencies>cryptdll.lib;Ws2_32.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)../../../../build_msvc14_$(Platform)/$(Configuration)/lib/</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(WINBUILDS_ROOT)build_msvc14_$(Platform)/$(Configuration)/lib/</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>

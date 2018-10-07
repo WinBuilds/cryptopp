@@ -29,6 +29,7 @@
     <RootNamespace>cryptdll</RootNamespace>
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <ProjectRoot>$(WINBUILDS_ROOT)</ProjectRoot>
   </PropertyGroup>
   <!-- Use DefaultPlatformToolset after Microsoft.Cpp.Default.props -->
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -54,8 +55,8 @@
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>NotSet</CharacterSet>
     <WholeProgramOptimization>false</WholeProgramOptimization>
-    <OutDir>$(SolutionDir)../../../../build_msvc14_$(Platform)/$(Configuration)/bin/</OutDir>
-    <IntDir>$(SolutionDir)../../../../build_msvc14_$(Platform)/$(Configuration)/obj/$(ProjectName)/</IntDir>
+    <OutDir>$(WINBUILDS_ROOT)build_msvc14_$(Platform)/$(Configuration)/bin/</OutDir>
+    <IntDir>$(WINBUILDS_ROOT)build_msvc14_$(Platform)/$(Configuration)/obj/$(ProjectName)/</IntDir>
   </PropertyGroup>
   <!-- All Configurations -->
   <ItemDefinitionGroup Label="All Configurations">
@@ -159,7 +160,7 @@
   <ItemDefinitionGroup Label="DLL MAC">
     <PostBuildEvent>
       <Message>Adding MAC to DLL...</Message>
-      <Command>"$(SolutionDir)..\..\..\..\build_msvc14_$(Platform)\$(Configuration)\bin\cryptest.exe" mac_dll "$(TargetPath)"
+      <Command>"$(WINBUILDS_ROOT)build_msvc14_$(Platform)\$(Configuration)\bin\cryptest.exe" mac_dll "$(TargetPath)"
 IF %ERRORLEVEL% EQU 0 (echo mac done &gt; "$(OutDir)\cryptopp.mac.done")
       </Command>
       <Inputs>%(Inputs)</Inputs>
